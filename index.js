@@ -13,7 +13,12 @@ connectDB();
 const app = express();
 
 // Enable CORS for frontend integration
-app.use(cors());
+const corsOptions = {
+  origin: ['https://url-shortener-backend-eta.vercel.app', 'http://localhost:5000'], // Replace with specific domain(s) or an array of domains
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true, // Allow cookies to be sent
+};
+app.use(cors(corsOptions));
 
 // Body parser middleware
 app.use(express.json());
